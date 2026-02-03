@@ -1,0 +1,132 @@
+---
+title: "pract 7 Principal Component Analysis"
+author: "payal ravindra jadhav"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+s=matrix(c(1,0.846,0.805,0.859,0.473,0.398,0.301,0.382,
+           0.846,1,0.881,0.826,0.376,0.326,0.277,0.415,
+           0.805,0.881,1,0.801,0.380,0.319,0.237,0.345,
+           0.859,0.826,0.801,1,0.436,0.329,0.327,0.365,
+           0.473,0.376,0.380,0.436,1,0.762,0.730,0.629,
+           0.398,0.326,0.319,0.329,0.762,1,0.583,0.577,
+           0.301,0.277,0.237,0.327,0.730,0.583,1,0.539,
+           0.382,0.415,0.345,0.365,0.629,0.577,0.539,1),nrow=8,byrow=T)
+ea=eigen(s)
+v_pc=ea$values
+p=ea$vectors
+TPV=sum(diag(s))
+pv_pc=(v_pc/TPV)*100
+cpv_pc=cumsum(pv_pc)
+
+
+
+pc_summary <- data.frame(
+  PC        = paste0("PC", 1:length(v_pc)),
+  Eigenvalue = v_pc,
+  Proportion = pv_pc,
+  Cumulative = cpv_pc
+)
+
+
+pc_df <- cbind(pc_summary, round(p, 4))  
+
+t(pc_df)
+
+```
+
+```{r}
+# Scree plot
+plot(pv_pc,
+     type = "b",                 
+     pch = 19,                   
+     col = "blue",
+     xlab = "Principal Component",
+     ylab = "percent vaiance",
+     main = "Scree Plot")
+
+```
+
+
+```{r}
+rm(list = ls())
+# Use iris dataset 
+data(iris)
+#View(iris)
+iris_num <- scale(iris[, 1:4])
+
+s1 <- cor(iris_num)
+
+
+ea   <- eigen(s1)
+v_pc <- ea$values        
+p    <- ea$vectors    
+
+TPV <- sum(diag(s1))
+
+pv_pc  <- (v_pc / TPV) * 100
+cpv_pc <- cumsum(pv_pc)
+
+
+pc_summary <- data.frame(
+  PC         = paste0("PC", 1:length(v_pc)),
+  Eigenvalue = v_pc,
+  Proportion = pv_pc,
+  Cumulative = cpv_pc
+)
+
+
+pc_df <- cbind(pc_summary, round(p, 4))
+print(pc_df)
+t(pc_df)
+# ---- Scree plot ----
+plot(pv_pc,
+     type = "b",
+     pch = 19,
+     col = "blue",
+     xlab = "Principal Component",
+     ylab = "percent variance",
+     main = "Scree Plot - Iris Data")
+
+```
+
+```{r}
+# Load iris numeric data
+data(iris)
+iris_num <- iris[, 1:4]
+
+# Standardize and run PCA
+pca_res <- prcomp(iris_num, scale. = TRUE)
+
+# Scores (principal component values for each observation)
+pc_scores <- pca_res$x   # columns: PC1, PC2, PC3, PC4
+
+# Eigenvalues and cumulative variance
+eig_vals <- pca_res$sdev^2
+prop_var <- eig_vals / sum(eig_vals) * 100
+cum_var  <- cumsum(prop_var)
+
+# Extract PC3 and PC4 scores
+pc3 <- pc_scores[, 3]
+pc4 <- pc_scores[, 4]
+
+# Compute Y
+y <- pc3 * cum_var[3] + pc4 * cum_var[4]
+
+# Combine into dataframe
+result <- data.frame(PC3 = pc3, PC4 = pc4, Y = y)
+head(result, 10)   # show first 10 rows
+
+```
+```{r}
+data(iris)
+plot(iris$Petal.Length,iris$Sepal.Width,
+     col=rep(c("grey","lightblue","lightgreen"),ech=50),
+     pch=19,
+     xlab="Petal Length",ylab="Petal Width",
+     main="Iris Petal Length vs Width (by Species color)")
+legend("topleft",legend=levels(iris$Species),
+       col=c("grey","lightblue","lightgreen"),pch=19)
+```
+

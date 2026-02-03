@@ -1,0 +1,75 @@
+---
+title: "MANOVA"
+author: "payal ravindra jadhav"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(tibble)
+G1=matrix(c(9,6,9,
+            3,2,2),nrow=2,byrow=T )
+G2=matrix(c(0,2,
+            4,0),nrow=2,byrow=T)
+G3=matrix(c(3,1,2,
+            8,9,7),nrow=2,byrow=T)
+p=2
+k=3
+n1=3
+n2=2
+n3=3
+n=n1+n2+n3
+G=matrix(c(G1,G2,G3),nrow=2)
+G
+S1=cov(t(G1))
+S2=cov(t(G2))
+S3=cov(t(G3))
+S=cov(t(G))
+
+A1=(n1-1)*S1
+A2=(n2-1)*S2
+A3=(n3-1)*S3
+A=(n-1)*S
+
+T_=A
+W=A1+A2+A3
+B=T_-W
+L=det(W)/det(T_)
+df = p * (k - 1)
+Criteria=-((n-1)-(p+k/2))*log(L)
+qchisq(0.05,p*(k-1))
+p_value = 1 - pchisq(Criteria, df)
+
+cat("W (Within SSCP):\n"); print(W)
+cat("\nB (Between SSCP):\n"); print(B)
+cat("\nT (Total SSCP):\n"); print(T)
+cat("\nWilks' Lambda:\n"); print(L)
+cat("\nTest Statistic:\n"); print(Criteria)
+cat("\nP-value:\n"); print(p_value)
+
+if (p_value < 0.05) {
+  cat("\nDecision: Reject H0 — significant group differences.\n")
+} else {
+  cat("\nDecision: Fail to reject H0 — no significant difference.\n")
+}
+
+
+# Compute scalar summaries
+SS_Treat <- det(B)
+SS_Error <- det(W)
+SS_Total <- det(T_)
+
+# Prepare MANOVA summary table
+manova_table <- tibble(
+  Source = c("Treatment", "Error", "Total"),
+  "Sum of Squares (SS)" = list(B,W,T_),
+  df = c(k - 1, n - k, n - 1),
+  "Wilks' Lambda" = c(round(L, 6), "-", "-"),
+  "p-value" = c(round(p_value, 6), "-", "-")
+)
+
+print(manova_table, row.names = FALSE)
+manova_table$`Sum of Squares(SS)`
+
+```
+

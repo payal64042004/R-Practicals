@@ -1,0 +1,59 @@
+---
+title: "topic"
+author: "payal ravindra jadhav"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(Matrix)
+library(expm)
+s=matrix(c(8,2,3,1,
+           2,5,-1,3,
+           3,-1,6,-2,
+           1,3,-2,7),nrow = 4)
+p=nrow(s)
+q=2
+n=col(s)
+s11=s[1:q,1:q]
+s12=s[1:q,(q+1):p]
+s22=s[(q+1):p,(q+1):p]
+s21=t(s12)
+
+A=solve(sqrtm(s22))%*%s21%*%solve(sqrtm(s11))
+R1=t(A)%*%A
+R2=A%*%t(A)
+
+E=eigen(R1)$vectors
+L1=eigen(R1)$values
+F=eigen(R2)$vectors
+L2=eigen(R2)$values
+
+U=solve(sqrtm(s11))%*%E
+V=solve(sqrtm(s22))%*%F
+
+ro=sqrt(L1)
+
+sprintf("rho(1)=first cononical correlation coff=%f",ro[1])
+sprintf("rho(2)=second cononical correlation coff=%f",ro[2])
+sprintf("coeff of first pair of cononical variables are (in column)")
+print(cbind(U[,2],V[,2]))
+
+
+sprintf("The vcm of conanical variable is :") 
+ccmat=t(U)%*%s12%*%V
+print(ccmat)
+
+      
+```
+
+
+```{r}
+
+
+```
+

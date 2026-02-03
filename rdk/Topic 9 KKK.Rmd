@@ -1,0 +1,31 @@
+---
+title: "Simple Componenet Analysis"
+author: "KAshish Khangar"
+date: "26/09/2025"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readxl)
+df=read_xlsx("C:\\Users\\MATH -276\\Documents\\SCA.xlsx")
+df
+N=as.matrix(df[,1:5])
+rownames=df$RowNames
+colmanes=df$ColNames[!is.na(df$ColNames)]
+I=nrow(N)
+J=ncol(N)
+n=sum(N)
+P=N/n
+r=rowSums(N)
+c=colSums(N)
+Dr.inv=diag(1/sqrt(r))
+Dc.inv=diag(1/sqrt(c))
+S=Dr.inv%*%(P-r%*%t(c))%*%Dc.inv
+
+
+```
+
