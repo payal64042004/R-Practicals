@@ -1,0 +1,500 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={SAMPLING DISTRIBUTION OF STATISTICAL/ESTIMATORS},
+  pdfauthor={payal ravindra jadhav},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{SAMPLING DISTRIBUTION OF STATISTICAL/ESTIMATORS}
+\author{payal ravindra jadhav}
+\date{2025-03-12}
+
+\begin{document}
+\maketitle
+
+\#\#TOPIC 1 \#QUATION 1 \#FOR SAMPLE MEAN
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_mean}\OtherTok{=}\NormalTok{sam\_var}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{x\_bar\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  X}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+\NormalTok{  x\_bar}\OtherTok{=}\FunctionTok{apply}\NormalTok{(X,}\DecValTok{1}\NormalTok{,mean)}
+\NormalTok{  sam\_mean[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(x\_bar)}
+\NormalTok{  sam\_var[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(x\_bar)}
+\NormalTok{  x\_bar\_list[[i]]}\OtherTok{=}\NormalTok{x\_bar}
+\NormalTok{\}}
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean,sam\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n  sam_mean    sam_var
+## [1,]  5 10.007679 0.20455108
+## [2,] 15  9.994667 0.06876133
+## [3,] 30  9.998244 0.03411883
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of x\_bar"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"x\_bar"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-1-1.pdf}
+\#FOR SAMPLE MEDIAN
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_median\_mean}\OtherTok{=}\NormalTok{sam\_median\_var}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{x\_median\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  X}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+\NormalTok{  x\_median}\OtherTok{=}\FunctionTok{apply}\NormalTok{(X,}\DecValTok{1}\NormalTok{,median)}
+\NormalTok{  sam\_median\_mean[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(x\_median)}
+\NormalTok{  sam\_median\_var[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(x\_median)}
+\NormalTok{  x\_median\_list[[i]]}\OtherTok{=}\NormalTok{x\_median}
+\NormalTok{\}}
+\FunctionTok{cbind}\NormalTok{(n,sam\_median\_mean,sam\_median\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n sam_median_mean sam_median_var
+## [1,]  5        9.994141     0.30138609
+## [2,] 15       10.019747     0.09722054
+## [3,] 30        9.998989     0.05265674
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(x\_median\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of x\_median"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"x\_median"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(x\_median\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(x\_median\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-2-1.pdf}
+\#for sample variance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_mean}\OtherTok{=}\NormalTok{sam\_var}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{x\_bar\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  X}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+\NormalTok{  x\_bar}\OtherTok{=}\FunctionTok{apply}\NormalTok{(X,}\DecValTok{1}\NormalTok{,var)}
+\NormalTok{  sam\_mean[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(x\_bar)}
+\NormalTok{  sam\_var[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(x\_bar)}
+\NormalTok{  x\_bar\_list[[i]]}\OtherTok{=}\NormalTok{x\_bar}
+\NormalTok{\}}
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean,sam\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n  sam_mean    sam_var
+## [1,]  5 1.0074055 0.58536617
+## [2,] 15 0.9780488 0.14073900
+## [3,] 30 0.9982604 0.07024209
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of x\_bar"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"x\_bar"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-3-1.pdf}
+\#1/n(sum(Xi-Xbar)\^{}2)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_mean}\OtherTok{=}\NormalTok{sam\_var}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{x\_bar\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  X}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{10}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+\NormalTok{  T1}\OtherTok{=}\FunctionTok{apply}\NormalTok{(X,}\DecValTok{1}\NormalTok{,var)}
+\NormalTok{  x\_bar}\OtherTok{=}\NormalTok{((n[i]}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n[i]}\SpecialCharTok{*}\NormalTok{T1)}
+\NormalTok{   sam\_mean[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(x\_bar)}
+\NormalTok{  sam\_var[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(x\_bar)}
+\NormalTok{  x\_bar\_list[[i]]}\OtherTok{=}\NormalTok{x\_bar}
+\NormalTok{\}}
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean,sam\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n  sam_mean    sam_var
+## [1,]  5 0.7965834 0.30481919
+## [2,] 15 0.9414755 0.12932361
+## [3,] 30 0.9673128 0.06496084
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of x\_bar"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"x\_bar"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(x\_bar\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\#\#QUATION 2 \#SAMPLE MEAN(Xbar) \#SAMPLE VARIANCE
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_mean\_T1}\OtherTok{=}\NormalTok{sam\_mean\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{sam\_var\_T1}\OtherTok{=}\NormalTok{sam\_var\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+
+\NormalTok{T1\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\NormalTok{T2\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  x}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{rpois}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{5}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+  
+\NormalTok{  T1}\OtherTok{=}\FunctionTok{apply}\NormalTok{(x,}\DecValTok{1}\NormalTok{,mean)}
+\NormalTok{  T2}\OtherTok{=}\FunctionTok{apply}\NormalTok{(x,}\DecValTok{1}\NormalTok{,var)}
+  
+\NormalTok{  sam\_mean\_T1[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T1)}
+\NormalTok{  sam\_mean\_T2[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T2)}
+  
+\NormalTok{  sam\_var\_T1[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T1)}
+\NormalTok{  sam\_var\_T2[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T2)}
+  
+\NormalTok{  T1\_list[[i]]}\OtherTok{=}\NormalTok{T1}
+\NormalTok{  T2\_list[[i]]}\OtherTok{=}\NormalTok{T2}
+\NormalTok{\}}
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean\_T1,sam\_mean\_T2,sam\_var\_T1,sam\_var\_T2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n sam_mean_T1 sam_mean_T2 sam_var_T1 sam_var_T2
+## [1,]  5    4.993600    4.886900  0.9746137  12.048847
+## [2,] 15    5.017533    5.010171  0.3179172   3.807790
+## [3,] 30    5.029367    5.021367  0.1788286   2.076045
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T1\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T1\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T2\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T2\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\#\#QUATION 3 for \#2xbar \#x(n)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_mean\_T1}\OtherTok{=}\NormalTok{sam\_mean\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{sam\_var\_T1}\OtherTok{=}\NormalTok{sam\_var\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+
+\NormalTok{T1\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\NormalTok{T2\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  x}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{runif}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+  
+\NormalTok{  T\_1}\OtherTok{=}\DecValTok{2}\SpecialCharTok{*}\FunctionTok{apply}\NormalTok{(x,}\DecValTok{1}\NormalTok{,mean)}
+\NormalTok{  T\_2}\OtherTok{=}\FunctionTok{apply}\NormalTok{(x,}\DecValTok{1}\NormalTok{,max)}
+  
+\NormalTok{  sam\_mean\_T1[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T\_1)}
+\NormalTok{  sam\_var\_T1[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T\_1)}
+  
+\NormalTok{  sam\_mean\_T2[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T\_2)}
+\NormalTok{  sam\_var\_T2[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T\_2)}
+  
+\NormalTok{  T1\_list[[i]]}\OtherTok{=}\NormalTok{T\_1}
+\NormalTok{  T2\_list[[i]]}\OtherTok{=}\NormalTok{T\_2\} }
+
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean\_T1,sam\_mean\_T2,sam\_var\_T1,sam\_var\_T2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n sam_mean_T1 sam_mean_T2 sam_var_T1 sam_var_T2
+## [1,]  5    4.981856    4.146836  1.7033690 0.49266810
+## [2,] 15    5.037627    4.709588  0.5572377 0.07904329
+## [3,] 30    4.977922    4.838616  0.2931587 0.02624183
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T1\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T1\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T2\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T2\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-6-2.pdf}
+\#\#QUATION 4 \#x(1) \#xbar-1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{mu}\OtherTok{=}\FloatTok{2.5}
+\NormalTok{sam\_mean\_T1}\OtherTok{=}\NormalTok{sam\_mean\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{sam\_var\_T1}\OtherTok{=}\NormalTok{sam\_var\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+
+\NormalTok{T1\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\NormalTok{T2\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  x}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{runif}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+\NormalTok{  y}\OtherTok{=}\NormalTok{mu}\SpecialCharTok{{-}}\FunctionTok{log}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{x)}
+  
+\NormalTok{  T\_1}\OtherTok{=}\FunctionTok{apply}\NormalTok{(y,}\DecValTok{1}\NormalTok{, min) }\CommentTok{\#x(1)}
+\NormalTok{  T\_2}\OtherTok{=}\FunctionTok{apply}\NormalTok{(y,}\DecValTok{1}\NormalTok{,mean)}\SpecialCharTok{{-}}\DecValTok{1}   \CommentTok{\#xbar{-}1}
+  
+\NormalTok{  sam\_mean\_T1[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T\_1)}
+\NormalTok{  sam\_var\_T1[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T\_1)}
+  
+\NormalTok{  sam\_mean\_T2[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T\_2)}
+\NormalTok{  sam\_var\_T2[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T\_2)}
+  
+\NormalTok{  T1\_list[[i]]}\OtherTok{=}\NormalTok{T\_1}
+\NormalTok{  T2\_list[[i]]}\OtherTok{=}\NormalTok{T\_2\}}
+
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean\_T1,sam\_mean\_T2,sam\_var\_T1,sam\_var\_T2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n sam_mean_T1 sam_mean_T2  sam_var_T1 sam_var_T2
+## [1,]  5    2.691712    2.499711 0.034729694 0.20417319
+## [2,] 15    2.570225    2.498882 0.004788617 0.05850185
+## [3,] 30    2.533251    2.503654 0.001077581 0.03189636
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T1\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T1\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T2\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T2\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\#\#QUATION 5 \#X(1) \#Xbar-X(1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{sam\_mean\_T1}\OtherTok{=}\NormalTok{sam\_var\_T1}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+\NormalTok{sam\_mean\_T2}\OtherTok{=}\NormalTok{sam\_var\_T2}\OtherTok{=}\FunctionTok{numeric}\NormalTok{(}\FunctionTok{length}\NormalTok{(n))}
+
+\NormalTok{mu}\OtherTok{=}\DecValTok{2}
+\NormalTok{sigma}\OtherTok{=}\DecValTok{1}
+
+\NormalTok{T1\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+\NormalTok{T2\_list}\OtherTok{=}\FunctionTok{list}\NormalTok{()}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(n))\{}
+\NormalTok{  x}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{runif}\NormalTok{(}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{n[i],}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{nrow=}\DecValTok{1000}\NormalTok{,}\AttributeTok{ncol=}\NormalTok{n[i])}
+\NormalTok{  y}\OtherTok{=}\NormalTok{mu}\SpecialCharTok{{-}}\NormalTok{(sigma}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{x))}
+  
+\NormalTok{  T1}\OtherTok{=}\FunctionTok{apply}\NormalTok{(y,}\DecValTok{1}\NormalTok{,min)}
+\NormalTok{  x\_bar}\OtherTok{=}\FunctionTok{apply}\NormalTok{(y,}\DecValTok{1}\NormalTok{,mean)}
+\NormalTok{  T2}\OtherTok{=}\NormalTok{x\_bar}\SpecialCharTok{{-}}\NormalTok{T1}
+  
+\NormalTok{  sam\_mean\_T1[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T1)}
+\NormalTok{  sam\_mean\_T2[i]}\OtherTok{=}\FunctionTok{mean}\NormalTok{(T2)}
+  
+\NormalTok{  sam\_var\_T1[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T1)}
+\NormalTok{  sam\_var\_T2[i]}\OtherTok{=}\FunctionTok{var}\NormalTok{(T2)}
+  
+\NormalTok{  T1\_list[[i]]}\OtherTok{=}\NormalTok{T1}
+\NormalTok{  T2\_list[[i]]}\OtherTok{=}\NormalTok{T2}
+\NormalTok{\}}
+\FunctionTok{cbind}\NormalTok{(n,sam\_mean\_T1,sam\_mean\_T2,sam\_var\_T1,sam\_var\_T2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       n sam_mean_T1 sam_mean_T2  sam_var_T1 sam_var_T2
+## [1,] 10    2.100066   0.8874569 0.010346271 0.08662829
+## [2,] 15    2.063410   0.9310162 0.004223123 0.05814121
+## [3,] 30    2.033579   0.9799821 0.001153832 0.03066188
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T1\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T1\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T1\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{1}\NormalTok{]],}\AttributeTok{col=}\StringTok{"skyblue"}\NormalTok{,}\AttributeTok{main=}\StringTok{"Histogram of T2\_list"}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"T2\_list"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{2}\NormalTok{]],}\AttributeTok{col=}\StringTok{"yellow"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{hist}\NormalTok{(T2\_list[[}\DecValTok{3}\NormalTok{]],}\AttributeTok{col=}\StringTok{"orange"}\NormalTok{,}\AttributeTok{add=}\NormalTok{T)}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\AttributeTok{legend=}\FunctionTok{paste}\NormalTok{(}\StringTok{"n="}\NormalTok{,n),}\AttributeTok{fill=}\FunctionTok{c}\NormalTok{(}\StringTok{"skyblue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{SAMPLING-DISTRIBUTION_files/figure-latex/unnamed-chunk-8-2.pdf}
+
+\end{document}

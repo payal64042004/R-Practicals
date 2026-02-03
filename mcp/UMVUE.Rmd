@@ -1,0 +1,65 @@
+---
+title: "UMVUE"
+author: "payal ravindra jadhav"
+date: "2025-03-12"
+output: html_document
+---
+##TOPIC 5
+#QUATION 1
+```{r}
+set.seed(123)
+n=c(5,15,30)
+lambda=2
+sam_mean=sam_var=numeric(length(n))
+crlb=numeric(length(n))
+umvue_list=list()
+
+for (i in 1:length(n)){
+  x=matrix(rpois(1000*n[i],2),nrow=1000,ncol=n[i])
+  x_bar=apply(x,1,sum)
+  umvue=(1-(1/n[i]))^x_bar
+  sam_mean[i]=mean(umvue)
+  sam_var[i]=var(umvue)
+  umvue_list[[i]]=umvue
+  
+  crlb[i]=(lambda*exp(-2*lambda))/n[i]
+}
+
+cbind(n,sam_mean,sam_var,crlb)
+
+
+hist(umvue_list[[1]],col="skyblue",main="Histogram of umvue",xlab="umvue")
+hist(umvue_list[[2]],col="yellow",add=T)
+hist(umvue_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+```
+#QUATION 2
+```{r}
+set.seed(123)
+n=c(10,15,30)
+thetha=2
+sam_mean=sam_var=numeric(length(n))
+crlb=numeric(length(n))
+umvue_list=list()
+
+for (i in 1:length(n)){
+  x=matrix(rnorm(1000*n[i],2),nrow=1000,ncol=n[i])
+  umvue=apply(x,1,sum)
+  sam_mean[i]=mean(umvue)
+  sam_var[i]=var(umvue)
+  umvue_list[[i]]=umvue
+  
+  crlb[i]=(1/n)
+}
+  cbind(n,sam_mean,sam_var,crlb)
+
+hist(umvue_list[[1]],col="skyblue",main="Histogram of umvue",xlab="umvue")
+hist(umvue_list[[2]],col="yellow",add=T)
+hist(umvue_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+
+```
+

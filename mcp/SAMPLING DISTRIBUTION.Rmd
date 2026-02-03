@@ -1,0 +1,276 @@
+---
+title: "SAMPLING DISTRIBUTION OF STATISTICAL/ESTIMATORS"
+author: "payal ravindra jadhav"
+date: "2025-03-12"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+---
+##TOPIC 1
+#QUATION 1
+#FOR SAMPLE MEAN
+
+```{r}
+n=c(5,15,30)
+sam_mean=sam_var=numeric(length(n))
+x_bar_list=list()
+for (i in 1:length(n)){
+  X=matrix(rnorm(1000*n[i],10,1),nrow=1000,ncol=n[i])
+  x_bar=apply(X,1,mean)
+  sam_mean[i]=mean(x_bar)
+  sam_var[i]=var(x_bar)
+  x_bar_list[[i]]=x_bar
+}
+cbind(n,sam_mean,sam_var)
+
+hist(x_bar_list[[1]],col="skyblue",main="Histogram of x_bar",xlab="x_bar")
+hist(x_bar_list[[2]],col="yellow",add=T)
+hist(x_bar_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+```
+#FOR SAMPLE MEDIAN
+```{r}
+n=c(5,15,30)
+sam_median_mean=sam_median_var=numeric(length(n))
+x_median_list=list()
+for (i in 1:length(n)){
+  X=matrix(rnorm(1000*n[i],10,1),nrow=1000,ncol=n[i])
+  x_median=apply(X,1,median)
+  sam_median_mean[i]=mean(x_median)
+  sam_median_var[i]=var(x_median)
+  x_median_list[[i]]=x_median
+}
+cbind(n,sam_median_mean,sam_median_var)
+
+hist(x_median_list[[1]],col="skyblue",main="Histogram of x_median",xlab="x_median")
+hist(x_median_list[[2]],col="yellow",add=T)
+hist(x_median_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+
+
+```
+#for sample variance
+```{r}
+n=c(5,15,30)
+sam_mean=sam_var=numeric(length(n))
+x_bar_list=list()
+for (i in 1:length(n)){
+  X=matrix(rnorm(1000*n[i],10,1),nrow=1000,ncol=n[i])
+  x_bar=apply(X,1,var)
+  sam_mean[i]=mean(x_bar)
+  sam_var[i]=var(x_bar)
+  x_bar_list[[i]]=x_bar
+}
+cbind(n,sam_mean,sam_var)
+hist(x_bar_list[[1]],col="skyblue",main="Histogram of x_bar",xlab="x_bar")
+hist(x_bar_list[[2]],col="yellow",add=T)
+hist(x_bar_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+
+```
+#1/n(sum(Xi-Xbar)^2)
+```{r}
+n=c(5,15,30)
+sam_mean=sam_var=numeric(length(n))
+x_bar_list=list()
+for (i in 1:length(n)){
+  X=matrix(rnorm(1000*n[i],10,1),nrow=1000,ncol=n[i])
+  T1=apply(X,1,var)
+  x_bar=((n[i]-1)/n[i]*T1)
+   sam_mean[i]=mean(x_bar)
+  sam_var[i]=var(x_bar)
+  x_bar_list[[i]]=x_bar
+}
+cbind(n,sam_mean,sam_var)
+hist(x_bar_list[[1]],col="skyblue",main="Histogram of x_bar",xlab="x_bar")
+hist(x_bar_list[[2]],col="yellow",add=T)
+hist(x_bar_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+```
+
+
+
+##QUATION 2
+#SAMPLE MEAN(Xbar)
+#SAMPLE VARIANCE
+```{r}
+n=c(5,15,30)
+sam_mean_T1=sam_mean_T2=numeric(length(n))
+sam_var_T1=sam_var_T2=numeric(length(n))
+
+T1_list=list()
+T2_list=list()
+
+for (i in 1:length(n)){
+  x=matrix(rpois(1000*n[i],5),nrow=1000,ncol=n[i])
+  
+  T1=apply(x,1,mean)
+  T2=apply(x,1,var)
+  
+  sam_mean_T1[i]=mean(T1)
+  sam_mean_T2[i]=mean(T2)
+  
+  sam_var_T1[i]=var(T1)
+  sam_var_T2[i]=var(T2)
+  
+  T1_list[[i]]=T1
+  T2_list[[i]]=T2
+}
+cbind(n,sam_mean_T1,sam_mean_T2,sam_var_T1,sam_var_T2)
+
+hist(T1_list[[1]],col="skyblue",main="Histogram of T1_list",xlab="T1_list")
+hist(T1_list[[2]],col="yellow",add=T)
+hist(T1_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+hist(T2_list[[1]],col="skyblue",main="Histogram of T2_list",xlab="T2_list")
+hist(T2_list[[2]],col="yellow",add=T)
+hist(T2_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+
+
+```
+
+##QUATION 3 for
+#2xbar
+#x(n)
+```{r}
+n=c(5,15,30)
+sam_mean_T1=sam_mean_T2=numeric(length(n))
+sam_var_T1=sam_var_T2=numeric(length(n))
+
+T1_list=list()
+T2_list=list()
+
+for (i in 1:length(n)){
+  x=matrix(runif(1000*n[i],0,5),nrow=1000,ncol=n[i])
+  
+  T_1=2*apply(x,1,mean)
+  T_2=apply(x,1,max)
+  
+  sam_mean_T1[i]=mean(T_1)
+  sam_var_T1[i]=var(T_1)
+  
+  sam_mean_T2[i]=mean(T_2)
+  sam_var_T2[i]=var(T_2)
+  
+  T1_list[[i]]=T_1
+  T2_list[[i]]=T_2} 
+
+cbind(n,sam_mean_T1,sam_mean_T2,sam_var_T1,sam_var_T2)
+
+
+hist(T1_list[[1]],col="skyblue",main="Histogram of T1_list",xlab="T1_list")
+hist(T1_list[[2]],col="yellow",add=T)
+hist(T1_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+hist(T2_list[[1]],col="skyblue",main="Histogram of T2_list",xlab="T2_list")
+hist(T2_list[[2]],col="yellow",add=T)
+hist(T2_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+```
+##QUATION 4
+#x(1)
+#xbar-1
+```{r}
+n=c(5,15,30)
+mu=2.5
+sam_mean_T1=sam_mean_T2=numeric(length(n))
+sam_var_T1=sam_var_T2=numeric(length(n))
+
+T1_list=list()
+T2_list=list()
+
+for (i in 1:length(n)){
+  x=matrix(runif(1000*n[i],0,1),nrow=1000,ncol=n[i])
+  y=mu-log(1-x)
+  
+  T_1=apply(y,1, min) #x(1)
+  T_2=apply(y,1,mean)-1   #xbar-1
+  
+  sam_mean_T1[i]=mean(T_1)
+  sam_var_T1[i]=var(T_1)
+  
+  sam_mean_T2[i]=mean(T_2)
+  sam_var_T2[i]=var(T_2)
+  
+  T1_list[[i]]=T_1
+  T2_list[[i]]=T_2}
+
+cbind(n,sam_mean_T1,sam_mean_T2,sam_var_T1,sam_var_T2)
+
+hist(T1_list[[1]],col="skyblue",main="Histogram of T1_list",xlab="T1_list")
+hist(T1_list[[2]],col="yellow",add=T)
+hist(T1_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+hist(T2_list[[1]],col="skyblue",main="Histogram of T2_list",xlab="T2_list")
+hist(T2_list[[2]],col="yellow",add=T)
+hist(T2_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+
+
+
+```
+
+##QUATION 5
+#X(1)
+#Xbar-X(1)
+
+```{r}
+n=c(10,15,30)
+sam_mean_T1=sam_var_T1=numeric(length(n))
+sam_mean_T2=sam_var_T2=numeric(length(n))
+
+mu=2
+sigma=1
+
+T1_list=list()
+T2_list=list()
+
+for (i in 1:length(n)){
+  x=matrix(runif(1000*n[i],0,1),nrow=1000,ncol=n[i])
+  y=mu-(sigma*log(1-x))
+  
+  T1=apply(y,1,min)
+  x_bar=apply(y,1,mean)
+  T2=x_bar-T1
+  
+  sam_mean_T1[i]=mean(T1)
+  sam_mean_T2[i]=mean(T2)
+  
+  sam_var_T1[i]=var(T1)
+  sam_var_T2[i]=var(T2)
+  
+  T1_list[[i]]=T1
+  T2_list[[i]]=T2
+}
+cbind(n,sam_mean_T1,sam_mean_T2,sam_var_T1,sam_var_T2)
+
+hist(T1_list[[1]],col="skyblue",main="Histogram of T1_list",xlab="T1_list")
+hist(T1_list[[2]],col="yellow",add=T)
+hist(T1_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+hist(T2_list[[1]],col="skyblue",main="Histogram of T2_list",xlab="T2_list")
+hist(T2_list[[2]],col="yellow",add=T)
+hist(T2_list[[3]],col="orange",add=T)
+legend("topright",legend=paste("n=",n),fill=c("skyblue","yellow","orange"))
+
+```
+

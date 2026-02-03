@@ -1,0 +1,26 @@
+---
+title: "mp and ump test"
+author: "payal ravindra jadhav"
+date: "2025-04-01"
+output: html_document
+---
+EXAMPLE 1
+```{r}
+n=10
+alpha=0.05
+lambda=2
+k=seq(0,50,1)
+p=ppois(k,20,lower.tail=F)
+cbind(k,p)
+#k=28
+l=(0.05-ppois(28,20,lower.tail=F))/dpois(28,20)
+l
+cat("the value for k:",k,"and gamma is",l)
+
+power=ppois(28,40,lower.tail=F)+0.8633004*dpois(28,40)
+power
+set.seed(1)
+x=rpois(10,2)
+sum(x)
+```
+

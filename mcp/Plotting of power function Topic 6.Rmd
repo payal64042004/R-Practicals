@@ -1,0 +1,80 @@
+---
+title: "plotting of power function"
+author: "payal ravindra jadhav"
+date: "2025-03-22"
+output: html_document
+---
+#Example 1
+
+```{r}
+mu_o=10
+n=25
+sigma_2=4
+alpha=0.025
+
+#a) to find the value of c
+z_alpha=qnorm(alpha,lower.tail = F)
+c=mu_o+sqrt(sigma_2)/sqrt(n)*z_alpha
+c
+
+#b) to find power function of different values of mu
+mu=seq(10.1,15,length.out=25)
+power_fun=function(mu){
+  1-pnorm(z_alpha+sqrt(n)/sqrt(sigma_2)*(mu_o-mu))
+}
+plot(mu,power_fun(mu))
+
+```
+#Example 2
+```{r}
+theta=seq(1.01,4,length.out=25)
+power_fun=function(theta){
+  ppois(2,theta,lower.tail=F)+0.8*dpois(2,theta)
+}
+plot(theta,power_fun(theta))
+```
+#Example 3
+```{r}
+n=5
+p_o=0.5
+
+# To find k
+k=seq(0,n,1)
+pbinom(k,n,p_o,lower.tail=F)
+#Here appropriate value of k is 4 
+# k= 4
+
+# To find gamma 
+l=(0.05-pbinom(4,n,p_o,lower.tail=F))/dbinom(4,n,p_o)
+l
+cat("here the value of k is 4 and the value of gamma=(l)is",l)
+p=seq(0.51,0.9,length.out=20)
+power_fun=function(p){
+  pbinom(4,n,p,lower.tail = F)
+}
+plot(p,power_fun(p),col="blue")
+     
+```
+#example 4
+```{r}
+n=10
+mu_o=5
+sigma=1
+alpha=0.05
+z_alpha=qnorm(alpha,lower.tail=F)
+mu=seq(2,7,length.out=500)
+
+#power function
+#H_0:mu=5 vs H_1:mu>5
+b_phi1=function(mu){
+  1-pnorm(sqrt(n)*(mu_o-mu)+z_alpha)
+}
+plot(mu,b_phi1(mu),type="l",col="blue",xlab="mu",ylab="power")
+#H_0:mu=5 vs H_1:mu<5
+b_phi2=function(mu){
+  pnorm(sqrt(n)*(mu_o-mu)-z_alpha)
+}
+lines(mu,b_phi2(mu),col="pink")
+legend("bottomright",legend=c("b_phi1","b_phi2"),col=c("blue","pink"),lty=1)
+```
+
